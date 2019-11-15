@@ -1,13 +1,22 @@
 import React from "react";
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button, CardHeader, UncontrolledCollapse
+} from 'reactstrap';
 
 export default function CharacterCard(props) {
   let { character } = props;
   return (
     <div key={character.id}>
-      <h1>{character.name}</h1>
-      <h4>Gender: {character.gender}</h4>
-      <p>Status: {character.status}</p>
-      <p>Species: {character.species}</p>
+      <Card className="characterCard">
+        <CardHeader className="characterName">{character.name}</CardHeader>
+        <CardImg top width="100%" src={character.image}/>
+        <CardBody>
+          <CardSubtitle><span className="bold">Gender:</span> {character.gender}</CardSubtitle>
+          <CardText><span className="bold">Status:</span> {character.status}</CardText>
+          <CardText><span className="bold">Species:</span> {character.species}</CardText>
+        </CardBody>
+      </Card>
     </div>
   );
 }

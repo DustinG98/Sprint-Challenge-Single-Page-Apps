@@ -17,12 +17,7 @@ export default function SearchForm(props) {
         }
       })
     
-    if(result === []) {
-      setNewCharacters(characters)
-    }
-    else{
-      setNewCharacters(result)
-    }
+    setNewCharacters(result)
   }, [searchTerm])
   
   return (
@@ -33,11 +28,13 @@ export default function SearchForm(props) {
         value={searchTerm}
         onChange={handleChange}
       />
-      {(searchTerm === "") ? characters.map(character => {
-        return <CharacterCard key={character.id} character={character}/>
-      }) : newCharacters.map(character => {
-        return <CharacterCard key={character.id} character={character}/>
-      })}
+      <div className="characters">
+        {(searchTerm === "") ? characters.map(character => {
+          return <CharacterCard key={character.id} character={character}/>
+        }) : newCharacters.map(character => {
+          return <CharacterCard key={character.id} character={character}/>
+        })}
+      </div>
     </section>
   );
 }

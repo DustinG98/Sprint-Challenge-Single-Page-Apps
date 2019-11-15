@@ -29,6 +29,7 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
+      <h1>Characters</h1>
       <SearchForm characters={characters} setNewCharacters={setNewCharacters}/>
     </section>
   );
