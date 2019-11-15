@@ -8,11 +8,6 @@ export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [characters, setCharacters] = useState([]);
 
-
-  const setNewCharacters = (newCharacter) => {
-    setCharacters([]);
-    setCharacters([newCharacter])
-  }
   const [page, setPage] = useState(1);
 
   if(page === 0){
@@ -36,7 +31,7 @@ export default function CharacterList() {
   return (
     <section className="character-list">
       <h1>Characters</h1>
-      <SearchForm characters={characters} setNewCharacters={setNewCharacters}/>
+      <SearchForm characters={characters}/>
       <div className="buttons">
         <Button className="pageButton" color="primary" onClick={() => setPage(page-1)} >Previous Page</Button>
         <h1>{page}</h1>

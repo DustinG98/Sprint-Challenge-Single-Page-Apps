@@ -11,13 +11,11 @@ export default function SearchForm(props) {
   }
   useEffect(() => {
       const result = characters.filter(character => {
-        if(character.name !== undefined) {
-          return character.name.toLowerCase().includes(searchTerm.toLowerCase())
-        }
+        return character.name.toLowerCase().includes(searchTerm.toLowerCase());
       })
     
     setNewCharacters(result)
-  }, [searchTerm])
+  }, [searchTerm, characters])
   
   return (
     <section className="search-form">
@@ -28,9 +26,7 @@ export default function SearchForm(props) {
         onChange={handleChange}
       />
       <div className="characters">
-        {(searchTerm === "") ? characters.map(character => {
-          return <CharacterCard key={character.id} character={character}/>
-        }) : newCharacters.map(character => {
+        {newCharacters.map(character => {
           return <CharacterCard key={character.id} character={character}/>
         })}
       </div>
