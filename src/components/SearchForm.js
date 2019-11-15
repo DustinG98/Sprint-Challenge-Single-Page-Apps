@@ -5,7 +5,7 @@ export default function SearchForm(props) {
   const { characters } = props
   const [searchTerm, setSearchTerm] = useState("");
   const [newCharacters, setNewCharacters] = useState([])
-
+  
   const handleChange = event => {
     setSearchTerm(event.target.value)
   }

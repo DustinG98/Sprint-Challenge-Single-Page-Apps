@@ -8,7 +8,6 @@ export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [characters, setCharacters] = useState([]);
 
-  let newCharacters = [];
 
   const setNewCharacters = (newCharacter) => {
     setCharacters([]);
@@ -33,7 +32,6 @@ export default function CharacterList() {
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
   }, [page]);
 
-  console.log(characters)
 
   return (
     <section className="character-list">
