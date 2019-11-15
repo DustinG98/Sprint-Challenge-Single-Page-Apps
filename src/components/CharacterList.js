@@ -13,17 +13,24 @@ export default function CharacterList() {
     setCharacters([]);
     setCharacters([newCharacter])
   }
+  const [page, setPage] = useState(1);
+
+  if(page === 0){
+    setPage(20);
+  } else if(page > 20){
+    setPage(1);
+  }
   
 
   useEffect(() => {
-    axios.get("https://rickandmortyapi.com/api/character/")
+    axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
         .then(response => 
           setCharacters(response.data.results))
         .catch(err => console.log("Error", err))
         
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+  }, [page]);
 
   console.log(characters)
 
@@ -31,6 +38,11 @@ export default function CharacterList() {
     <section className="character-list">
       <h1>Characters</h1>
       <SearchForm characters={characters} setNewCharacters={setNewCharacters}/>
+      <div className="buttons">
+        <button className="pageButton" onClick={() => setPage(page-1)} >{'<'}</button>
+        <h1>{page}</h1>
+        <button className="pageButton" onClick={() => setPage(page+1)}>{'>'}</button>
+      </div>
     </section>
   );
 }
