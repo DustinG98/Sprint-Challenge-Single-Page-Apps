@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 
 import SearchForm from './SearchForm'
+import { Button } from 'reactstrap';
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -39,9 +40,9 @@ export default function CharacterList() {
       <h1>Characters</h1>
       <SearchForm characters={characters} setNewCharacters={setNewCharacters}/>
       <div className="buttons">
-        <button className="pageButton" onClick={() => setPage(page-1)} >{'<'}</button>
+        <Button className="pageButton" color="primary" onClick={() => setPage(page-1)} >Previous Page</Button>
         <h1>{page}</h1>
-        <button className="pageButton" onClick={() => setPage(page+1)}>{'>'}</button>
+        <Button className="pageButton" color="primary" onClick={() => setPage(page+1)}>Next Page</Button>
       </div>
     </section>
   );
