@@ -21,9 +21,9 @@ export default function SearchForm(props) {
       .then(response => {
         setSearchResults(response.data.results)
         console.log(response)
-        if(page === 0){
-          setPage(response.data.info.pages);
-        } else if(page > response.data.info.pages){
+        if(page < 1){
+          setPage(response.data.info.pages-1);
+        } else if(page > response.data.info.pages-1){
           setPage(1);
         }
       })
