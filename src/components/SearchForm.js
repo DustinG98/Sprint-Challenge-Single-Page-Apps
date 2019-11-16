@@ -5,17 +5,15 @@ import axios from 'axios'
 
 export default function SearchForm(props) {
   const { characters, page, setPage } = props
+
   const [searchTerm, setSearchTerm] = useState("");
+
   const [searchResult, setSearchResults] = useState([]);
-
-
-
-  
-
 
   const handleChange = event => {
     setSearchTerm(event.target.value)
   }
+  
   useEffect(() => {
       axios.get(`https://rickandmortyapi.com/api/character/?name=${searchTerm}&page=${page}`)
       .then(response => {

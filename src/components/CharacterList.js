@@ -4,11 +4,7 @@ import SearchForm from './SearchForm'
 
 
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
-
   const [page, setPage] = useState(1);
-
-
 
   return (
     <section className="character-list">
