@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CharacterCard from "./CharacterCard";
+import axios from 'axios'
+
 
 export default function SearchForm(props) {
   const { characters } = props
   const [searchTerm, setSearchTerm] = useState("");
   const [newCharacters, setNewCharacters] = useState([])
+  const [searchResult, setSearchResults] = useState([]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value)
@@ -13,8 +16,12 @@ export default function SearchForm(props) {
       const result = characters.filter(character => {
         return character.name.toLowerCase().includes(searchTerm.toLowerCase());
       })
+      setNewCharacters(result)
+      axios.get(`https://rickandmortyapi.com/api/character/?name=${searchTerm}`)
+      .then(response => {
+        setSearchResults(response.data.results)
+      })
     
-    setNewCharacters(result)
   }, [searchTerm, characters])
   
   return (
@@ -26,9 +33,11 @@ export default function SearchForm(props) {
         onChange={handleChange}
       />
       <div className="characters">
-        {newCharacters.map(character => {
+        {(searchTerm === "") ? newCharacters.map(character => {
+          return <div> <CharacterCard key={character.id} character={character}/> </div>
+        }) : searchResult.map(character => {
           return <CharacterCard key={character.id} character={character}/>
-        })}
+        }) }
       </div>
     </section>
   );

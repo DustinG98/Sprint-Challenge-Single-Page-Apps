@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
-
-import SearchForm from './SearchForm'
 import { Button } from 'reactstrap';
+import SearchForm from './SearchForm'
+
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -15,7 +15,7 @@ export default function CharacterList() {
   } else if(page > 20){
     setPage(1);
   }
-  
+
 
   useEffect(() => {
     axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
@@ -33,10 +33,10 @@ export default function CharacterList() {
       <h1>Characters</h1>
       <SearchForm characters={characters}/>
       <div className="buttons">
-        <Button className="pageButton" color="primary" onClick={() => setPage(page-1)} >Previous Page</Button>
-        <h1>{page}</h1>
-        <Button className="pageButton" color="primary" onClick={() => setPage(page+1)}>Next Page</Button>
-      </div>
+          <Button className="pageButton" color="primary" onClick={() => setPage(page-1)} >Previous Page</Button>
+          <h1>{page}</h1>
+          <Button className="pageButton" color="primary" onClick={() => setPage(page+1)}>Next Page</Button>
+        </div>
     </section>
   );
 }
