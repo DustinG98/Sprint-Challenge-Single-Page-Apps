@@ -13,12 +13,11 @@ export default function SearchForm(props) {
   const handleChange = event => {
     setSearchTerm(event.target.value)
   }
-  
+
   useEffect(() => {
       axios.get(`https://rickandmortyapi.com/api/character/?name=${searchTerm}&page=${page}`)
       .then(response => {
         setSearchResults(response.data.results)
-        console.log(response)
         if(page < 1){
           setPage(response.data.info.pages-1);
         } else if(page > response.data.info.pages-1){
