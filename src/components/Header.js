@@ -8,14 +8,14 @@ import {
 export default function Header() {
   
   return (
-    <header className="ui centered" >
+    <header className="ui centered main-header" >
       <h1 className="ui center">Rick &amp; Morty Fan Page</h1>
       <Navbar color="light" light expand="md">
-        <Nav className="ml-auto" navbar> 
-          <NavItem>
+        <Nav className="ml-auto nav" navbar> 
+          <NavItem className="link">
             <Link to="/">Home</Link>
           </NavItem>
-          <NavItem>
+          <NavItem className="link">
             <Link to="/characters">Characters</Link>
           </NavItem>
         </Nav>
