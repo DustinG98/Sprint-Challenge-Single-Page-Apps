@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Button } from 'reactstrap';
+import SearchForm from './SearchForm'
+
 
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
-
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+  const [page, setPage] = useState(1);
 
   return (
     <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
+      <h1>Characters</h1>
+      <SearchForm page={page} setPage={setPage}/>
+      <div className="buttons">
+          <Button className="pageButton" color="primary" onClick={() => setPage(page-1)} >Previous Page</Button>
+          <h1>{page}</h1>
+          <Button className="pageButton" color="primary" onClick={() => setPage(page+1)}>Next Page</Button>
+        </div>
     </section>
   );
 }
