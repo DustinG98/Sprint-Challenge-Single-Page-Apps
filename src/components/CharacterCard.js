@@ -6,7 +6,6 @@ import {
 
 export default function CharacterCard(props) {
   let { character } = props;
-  
   return (
     <div key={character.id}>
       <Card className="characterCard">
